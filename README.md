@@ -12,14 +12,13 @@
 
 ```javascript
 // For SSR.
-document.body.querySelectorAll('iframe').forEach(node => {
+document.body.querySelectorAll('iframe,img').forEach(node => {
   node.setAttribute('loading', 'lazy')
 })
 copy(document.documentElement.innerHTML)
 // --> manually replace amp-carousel --> amp-carousel2 so it doesn't hide itself immediately during build.
 
 // For nojs
-document.querySelectorAll('script[src]').forEach(node => node.remove())
-document.querySelectorAll('script[custom-element]').forEach(node => node.remove())
+document.querySelectorAll('script[src],script[custom-element]').forEach(node => node.remove())
 copy(document.documentElement.innerHTML)
 ```
